@@ -146,4 +146,16 @@ def calculate_leverage(atr):
 def simulate_trade(row):
     atr = row['atr']
     entry = row['close']
-    tp = entry + (a
+    tp = entry + (atr * RISK_REWARD_RATIO) if row['signal'] == 1 else entry - (atr * RISK_REWARD_RATIO)
+    sl = entry - atr if row['signal'] == 1 else entry + atr
+    future = row['close']
+    if row['signal'] == 1 and future >= tp:
+        return 1
+    elif row['signal'] == -1 and future <= tp:
+        return 1
+    elif row['signal'] == 1 and future <= sl:
+        return 0
+    elif row['signal'] == -1 and future >= sl:
+        return 0
+    return None
+
