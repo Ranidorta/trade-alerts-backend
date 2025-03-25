@@ -2,4 +2,4 @@ flask
 pandas
 requests
 numpy
-TA-Lib==0.4.24
+
