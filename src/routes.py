@@ -1,4 +1,4 @@
-ffrom flask import Flask, jsonify
+from flask import Flask, jsonify
 import pandas as pd
 import pandas_ta as ta
 from datetime import datetime
